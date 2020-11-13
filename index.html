@@ -4,14 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather_Watcher</title>
+    <link rel="stylesheet" href="./assets/reset.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/style.css"/>
 </head>
-<body>
 
-    <script src="./assets/script.js"></script>
+<body>
+   
+<div class="jumbotron jumbotron-fluid p-3 mb-2 bg-dark text-white text-center">
+  <div class="container">
+    <h1 class="display-4 font-weight-bold">Weather Dashboard</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row ">
+  <div class="col-4">
+      <h5 class="m-2 p-1 ml-4 text-left font-weight-normal">Search for a City:</h5>
+      <form class="form-inline m-2 p-1">
+        <input class="form-control m-2 ml-4 p-1 mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary m-2 ml-4 p-1" type="submit">Search</button>
+      </form>
+  </div>
+   
+    <div class="card m-2 ml-4 p-1 col">
+      <h5 class="m-2 ml-4 p-1">City (Date) Icon</h5>
+      <h6 class="m-2 ml-4 p-1 font-weight-light">Temperature:</h6>
+      <h6 class="m-2 ml-4 p-1 font-weight-light">Humidity:</h6>
+      <h6 class="m-2 ml-4 p-1 font-weight-light">Wind Speed:</h6>
+      <h6 class="m-2 ml-4 p-1 font-weight-light">UV Index:</h6>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row ">
+    <div class="col-4">
+      <ul class="list-group">
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+        <li class="list-group-item">City</li>
+      </ul>
+    </div>
+  </div>
+
+   <div class="row ">
+     <div class="m-2 col-2 ml-4 p-1">
+        <h2 class="col-6 text-nowrap">5-Day Forcast</h2>
+     </div>
+   </div>
+        
+   <div class="card row text-white text-nowrap bg-primary m-2 mb-3" style="max-width: 11rem;">
+    <div class="card-body m-2 ml-4 p-1 col-2">
+      <h6 class="card-title text-sm-left font-weight-bold">00/00/0000</h6>
+      <h6 class="">Icon</h6>
+      <h6 class="">Temp:</h6>
+      <h6 class="">Humidity:</h6>
+    </div>
+   </div> 
+
+   <div class="card row text-white text-nowrap bg-primary m-2 mb-3" style="max-width: 11rem;">
+    <div class="card-body m-2 ml-4 p-1 col-2">
+      <h6 class="card-title text-sm-left font-weight-bold">00/00/0000</h6>
+      <h6 class="">Icon</h6>
+      <h6 class="">Temp:</h6>
+      <h6 class="">Humidity:</h6>
+    </div>
+   </div> 
+
+   <div class="card row text-white text-nowrap bg-primary m-2 mb-3" style="max-width: 11rem;">
+    <div class="card-body m-2 ml-4 p-1 col-2">
+      <h6 class="card-title text-sm-left font-weight-bold">00/00/0000</h6>
+      <h6 class="">Icon</h6>
+      <h6 class="">Temp:</h6>
+      <h6 class="">Humidity:</h6>
+    </div>
+   </div> 
+
+   <div class="card row text-white text-nowrap bg-primary m-2 mb-3" style="max-width: 11rem;">
+    <div class="card-body m-2 ml-4 p-1 col-2">
+      <h6 class="card-title text-sm-left font-weight-bold">00/00/0000</h6>
+      <h6 class="">Icon</h6>
+      <h6 class="">Temp:</h6>
+      <h6 class="">Humidity:</h6>
+   </div>  
+  </div>
+   
+  <div class="card row text-white text-nowrap bg-primary m-2 mb-3" style="max-width: 11rem;">
+    <div class="card-body m-2 ml-4 p-1 col-2">
+      <h6 class="card-title text-sm-left font-weight-bold">00/00/0000</h6>
+      <h6 class="">Icon</h6>
+      <h6 class="">Temp:</h6>
+      <h6 class="">Humidity:</h6>
+   </div>  
+  </div>
+</div>
+
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>    
+    <!-- <scrip src=></script> -->
+    <script src="./assets/script.js"></script> 
+
 </body>
 </html>
