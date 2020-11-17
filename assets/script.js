@@ -1,26 +1,29 @@
 $(document).ready(function(){
-      // var  = $(this).attr("data-");
-      // var time = moment().format("MMM Do YYYY"); 
-      // var hour = moment().format("h");
-      // $("#currentDay").append(time);
-      var city = $("#searchCity")
-
+    
+    var city = $("#searchCity");
+    var searchButton=$("#searchEl");
+    var search = $("#inputEl")
 
   //  when user clicks search button
-  // $("button").on("click", function() { or?
   function handleSearch(){
 
+    var cityName = search.val();
     // THEN I get the value that is entered into the search input
-    makeWeatherRequest(search);
+    makeWeatherRequest(cityName);
+    var time = moment().format("MMM Do YYYY"); 
+    $("#currentDay").append(time);
+
   }
       
-  function makeWeatherRequest(search){
-    // next build urrrl for first API request
-    var queryURL = "https://api.openweathermap.org/data/2.5/onecall?" + "&appid=a6f6ba7128a694d4c8ca6dff399acbd3";
-    console.log(queryURL)
+  function makeWeatherRequest(cityName){
+    // next build urrrl for first API request key}
+    var queryURL ="http://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
+    console.log(cityName)
+    
 
     // NEXT make the request to the URL with JQuery ajax
     $.ajax( queryURL ).then(function(response) {
+      console.log(response)
       // START rendering data to the HTML
 
       // Then get the lat and log out of thr 'response object'
@@ -43,8 +46,8 @@ $(document).ready(function(){
 
   });
 
-  
-    // $.ajax({
+
+  //   $.ajax({
   //       url: "",
   //       method: "GET"
   //     }).then(function(response) {
@@ -66,4 +69,8 @@ $(document).ready(function(){
 
   //create button event to call the clearing of local storage 
   // $(clearButton).on("click",buttonClear)
+  $(searchButton).on("click",function(e){
+    e.preventDefault();
+    handleSearch();
+  });
 })
