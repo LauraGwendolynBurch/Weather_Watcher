@@ -64,8 +64,8 @@ $(document).ready(function(){
       $("#iconHere").attr("src", "http://openweathermap.org/img/w/" + icon + ".png")
       $("#humidity").text("Humidity: " + response.main.humidity + " %")
       var tempEl = response.main.temp
-      
-      $("#temperature").text("Temperature: " + ((tempEl-273.15)*1.8)+32 + " °F");
+      var tempChange=Math.floor((tempEl-273.15)*1.8)+32
+      $("#temperature").text("Temperature: " + tempChange + " °F");
       // var lat=search.val()
       // var lon=search.val()
       // var queryUV="http://api.openweathermap.org/data/2.5/uvi?lat="+ lat +" &lon= "+ lon +" &appid=79f846e03cf3435d40ca0302d0a1b7fb";
