@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    // var city = $("#searchCity");
+    var citySideList = $(".cityList");
     var searchButton=$("#searchEl");
     var search = $("#inputEl")
 
@@ -13,11 +13,25 @@ $(document).ready(function(){
     makeWeatherRequest(upperCaseCity);
     var time = moment().format("MMM Do YYYY"); 
     $("#currentDay").text(time);
-    $("#cityNameHere").text(upperCaseCity)
+    $("#cityNameHere").text(upperCaseCity);
     // var icon=upperCaseCity.weather.icon
     // $("#iconHere").append(icon);
+    // $(".cityList").text(upperCaseCity);
+    renderButton()
   }
+     
+  function renderButton(){
+
+    for (var i=0; i < citySideList.length; i++) {
+    
+       var listEl =$("<ul>").text(citySideList[i]);
+      $(".cityList").text(listEl)
       
+    }
+
+
+  }
+
   function makeWeatherRequest(cityName){
     // next build urrrl for first API request key}
     var queryURL ="http://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
@@ -77,10 +91,8 @@ $(document).ready(function(){
     handleSearch();
   });
 
-  $(searchButton).on("click",function(e){
-    e.preventDefault();
-    handleSearch();
-  });
+  $(document).on("click", ".cityList", handleSearch);
+  
 
 })
 
