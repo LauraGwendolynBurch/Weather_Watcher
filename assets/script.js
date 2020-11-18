@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var city = $("#searchCity");
+    // var city = $("#searchCity");
     var searchButton=$("#searchEl");
     var search = $("#inputEl")
 
@@ -8,17 +8,20 @@ $(document).ready(function(){
   function handleSearch(){
 
     var cityName = search.val();
+    var upperCaseCity = cityName.toUpperCase(); 
     // THEN I get the value that is entered into the search input
-    makeWeatherRequest(cityName);
+    makeWeatherRequest(upperCaseCity);
     var time = moment().format("MMM Do YYYY"); 
-    $("#currentDay").append(time);
-
+    $("#currentDay").text(time);
+    $("#cityNameHere").text(upperCaseCity)
+    // var icon=upperCaseCity.weather.icon
+    // $("#iconHere").append(icon);
   }
       
   function makeWeatherRequest(cityName){
     // next build urrrl for first API request key}
     var queryURL ="http://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
-    console.log(cityName)
+    // console.log(cityName)
     
 
     // NEXT make the request to the URL with JQuery ajax
@@ -73,4 +76,11 @@ $(document).ready(function(){
     e.preventDefault();
     handleSearch();
   });
+
+  $(searchButton).on("click",function(e){
+    e.preventDefault();
+    handleSearch();
+  });
+
 })
+
