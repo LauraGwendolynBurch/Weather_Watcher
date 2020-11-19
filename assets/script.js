@@ -24,8 +24,6 @@ $(document).ready(function(){
     $("#cityNameHere").text(upperCaseCity);
     previousCities.push(cityName);
     localStorage.setItem("city", JSON.stringify(previousCities))
-    // $("#iconHere").append(icon);
-    // $(".cityList").text(upperCaseCity);
     renderButton()
   }
      
@@ -36,10 +34,8 @@ $(document).ready(function(){
     var listEl =$("<ul>").text(previousCities[i]);
     listEl.append(sideBtn)
     $(".cityList").text(listEl)
-    
-      
     }
-}
+  }
 
   // add a click event to the side cities
     $( ".cityList").on("click", function(e){
@@ -54,24 +50,33 @@ $(document).ready(function(){
     // next build urrrl for first API request key}
     var queryURL ="http://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
     // console.log(cityName)
-    
+    if (cityName == "" || !(isNaN(cityName))){
+      // localStorage.removeItem();
+      return;
+    };
 
     // NEXT make the request to the URL with JQuery ajax
     $.ajax( queryURL ).then(function(response) {
-      console.log(response)
+      // console.log(response)
       var icon=response.weather[0].icon
-      $("#windSpeed").text("Wind Speed: " + response.wind.speed + " MPH")
-      $("#iconHere").attr("src", "http://openweathermap.org/img/w/" + icon + ".png")
-      $("#humidity").text("Humidity: " + response.main.humidity + " %")
+      var windEl = response.wind.speed
+      var windChange=Math.floor(windEl * 2.2)
+      var lat=response.coord.lat
+      var lon=response.coord.lon
       var tempEl = response.main.temp
       var tempChange=Math.floor((tempEl-273.15)*1.8)+32
+      var queryUV="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=79f846e03cf3435d40ca0302d0a1b7fb";
+      
+      $("#windSpeed").text("Wind Speed: " + windChange + " MPH")
+      $("#iconHere").attr("src", "http://openweathermap.org/img/w/" + icon + ".png")
+      $("#humidity").text("Humidity: " + response.main.humidity + " %")
       $("#temperature").text("Temperature: " + tempChange + " °F");
-      // var lat=search.val()
-      // var lon=search.val()
-      // var queryUV="http://api.openweathermap.org/data/2.5/uvi?lat="+ lat +" &lon= "+ lon +" &appid=79f846e03cf3435d40ca0302d0a1b7fb";
-      // $.ajax( queryUV ).then(function(response) {
+      
+    $.ajax( queryUV ).then(function(response) {
         // console.log(response)
-
+        var uvIndex=response.current.uvi
+        $("#uvIndex").text("UV Index: " + uvIndex)
+       
       // START rendering data to the HTML
 
       // Then get the lat and log out of thr 'response object'
@@ -79,8 +84,9 @@ $(document).ready(function(){
       // NEXT call"makeOneCallRequest( lat, lng )' and pass in the lat and lng.
     // });
     });
-  } 
-    
+  })
+}
+
   function makeOneCallRequest ( lat, lng ){
 
     // NEXT, build the url for 1st api request 
