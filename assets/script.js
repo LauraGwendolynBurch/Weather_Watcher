@@ -95,7 +95,7 @@ $(document).ready(function(){
        }
       
        var daily = moment().add(1, 'days').calendar("(MMM Do YYYY)");   
-       var iconDayOne=response.daily[1].weather.icon
+       var iconDayOne=response.daily[1].weather[0].icon
        var tempOne=response.daily[1].temp.day
        var tempOneNew=Math.floor((tempOne-273.15)*1.8)+32
        $("#fiveDay").text(daily);
@@ -104,7 +104,7 @@ $(document).ready(function(){
        $("#dayHumidity").text("Humidity: " + response.daily[1].humidity + " %")
 
        var daily2 = moment().add(2, 'days').calendar("(MMM Do YYYY)");   
-       var iconDayOne2=response.daily[2].weather.icon
+       var iconDayOne2=response.daily[2].weather[0].icon
        var tempOne2=response.daily[2].temp.day
        var tempOneNew2=Math.floor((tempOne2-273.15)*1.8)+32
        $("#fiveDay2").text(daily2);
@@ -113,7 +113,7 @@ $(document).ready(function(){
        $("#dayHumidity2").text("Humidity: " + response.daily[2].humidity + " %")
 
        var daily3 = moment().add(3, 'days').calendar("(MMM Do YYYY)");   
-       var iconDayOne3=response.daily[3].weather.icon
+       var iconDayOne3=response.daily[3].weather[0].icon
        var tempOne3=response.daily[3].temp.day
        var tempOneNew3=Math.floor((tempOne3-273.15)*1.8)+32
        $("#fiveDay3").text(daily3);
@@ -122,7 +122,7 @@ $(document).ready(function(){
        $("#dayHumidity3").text("Humidity: " + response.daily[3].humidity + " %")
 
        var daily4 = moment().add(4, 'days').calendar("(MMM Do YYYY)");   
-       var iconDayOne4=response.daily[4].weather.icon
+       var iconDayOne4=response.daily[4].weather[0].icon
        var tempOne4=response.daily[4].temp.day
        var tempOneNew4=Math.floor((tempOne4-273.15)*1.8)+32
        $("#fiveDay4").text(daily4);
@@ -131,7 +131,7 @@ $(document).ready(function(){
        $("#dayHumidity4").text("Humidity: " + response.daily[4].humidity + " %")
 
        var daily5 = moment().add(5, 'days').calendar("(MMM Do YYYY)");   
-       var iconDayOne5=response.daily[5].weather.icon
+       var iconDayOne5=response.daily[5].weather[0].icon
        var tempOne5=response.daily[5].temp.day
        var tempOneNew5=Math.floor((tempOne5-273.15)*1.8)+32
        $("#fiveDay5").text(daily5);
