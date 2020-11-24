@@ -18,13 +18,3 @@
     width: fit-content;
 }
 
-
-var daily = moment().add(1, 'days').calendar("(MMM Do YYYY)");   
-      var iconDayOne=response.daily[1].weather.icon
-      var tempOne=response.daily[1].temp.day
-      var tempOneNew=Math.floor((tempOne-273.15)*1.8)+32
-      $("#fiveDay").text(daily);
-      $("#dayIcon").attr("src", "http://openweathermap.org/img/w/" + iconDayOne + ".png")
-      $("#dayTemp").text("Temp: " + tempOneNew + " °F");
-      $("#dayHumidity").text("Humidity: " + response.daily[1].humidity + " %")
-      
