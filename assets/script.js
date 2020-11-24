@@ -4,7 +4,7 @@ $(document).ready(function(){
     var searchButton=$("#searchEl");
     var search = $("#inputEl");
     var previousCities = [];
-    var storage = JSON.parse(localStorage.getItem("city"))
+    // var storage = JSON.parse(localStorage.getItem("city"))
     // get all searched cities, for loop, push to previousCities for each city
     // then render function that loops through all previousCities, added button and appends to citySideList
     // for (var i = 0; i < storage.length; index++) {
