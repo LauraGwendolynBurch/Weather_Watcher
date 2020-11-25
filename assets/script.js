@@ -4,32 +4,36 @@ $(document).ready(function(){
     var searchButton=$("#searchEl");
     var search = $("#inputEl");
     var previousCities = [];
-    // var storage = JSON.parse(localStorage.getItem("city"))
+    var storage = JSON.parse(localStorage.getItem("city")) || []
+    
+
     // get all searched cities, for loop, push to previousCities for each city
     // then render function that loops through all previousCities, added button and appends to citySideList
-    // for (var i = 0; i < storage.length; index++) {
-    //   previousCities.push(storage)
-    //   console.log()
+    for (var i = 0; i < storage.length; i++){
+      previousCities.push(storage)
+      console.log(previousCities)
       
-    // }
+    }
   //  when user clicks search button
   function handleSearch(){
 
     var cityName = search.val();
     var upperCaseCity = cityName.toUpperCase(); 
     // THEN I get the value that is entered into the search input
-    makeWeatherRequest(upperCaseCity);
+    makeWeatherRequest(cityName);
     var time = moment().format("(MMM Do YYYY)"); 
     $("#currentDay").text(time);
     $("#cityNameHere").text(upperCaseCity);
     previousCities.push(cityName);
-    localStorage.setItem("city", JSON.stringify(previousCities))
+    localStorage.setItem("city", JSON.stringify(cityName))
+    search.val("");
     renderButton()
+
     
   }
      
   function renderButton(){
-    console.log(citySideList)
+    // console.log(citySideList)
     for (var i=0; i < previousCities.length; i++) {
     var sideBtn =$("<button>")
     var listEl =$("<ul>").text(previousCities[i]);
@@ -52,7 +56,7 @@ $(document).ready(function(){
     var queryURL ="https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
     // console.log(cityName)
     if (cityName == "" || !(isNaN(cityName))){
-      // localStorage.removeItem();
+      
       return;
     };
 
@@ -142,42 +146,7 @@ $(document).ready(function(){
   })
 }
 
-  // function makeOneCallRequest ( lat, lng ){
-
-    // NEXT, build the url for 1st api request 
-    // 
-
-    // next, make the rrequest to the url with jquery ajax
-    // $.ajax( queryURL ).then(function(response) {
-
-      // finish rendering data to the html
-
-
-  // });
-
-
-  //   $.ajax({
-  //       url: "",
-  //       method: "GET"
-  //     }).then(function(response) {
-  //       console.log(response);
-  //     });
-  // } 
-
-
-
-  // }
-      
-  
-  // var clearButton = $("#button")
-
-  // function buttonClear(){
-  //   localStorage.clear();
-  //   location.reload();
-  // }
-
-  //create button event to call the clearing of local storage 
-  // $(clearButton).on("click",buttonClear)
+ 
   
   
   $(searchButton).on("click",function(e){
