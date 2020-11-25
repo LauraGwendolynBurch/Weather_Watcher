@@ -10,8 +10,8 @@ $(document).ready(function(){
     // get all searched cities, for loop, push to previousCities for each city
     // then render function that loops through all previousCities, added button and appends to citySideList
     for (var i = 0; i < storage.length; i++){
-      previousCities.push(storage)
-      console.log(previousCities)
+      previousCities.push(storage[0])
+      console.log(storage[0])
       
     }
   //  when user clicks search button
@@ -25,7 +25,7 @@ $(document).ready(function(){
     $("#currentDay").text(time);
     $("#cityNameHere").text(upperCaseCity);
     previousCities.push(cityName);
-    localStorage.setItem("city", JSON.stringify(cityName))
+    localStorage.setItem("city", JSON.stringify(previousCities))
     search.val("");
     renderButton()
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
       $("#temperature").text("Temperature: " + tempChange + " °F");
       
     $.ajax( queryUV ).then(function(response) {
-        console.log(response)
+        // console.log(response)
         var uvIndex=response.current.uvi
         $("#uvIndex").text("UV Index: " + uvIndex)
        
