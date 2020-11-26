@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    var citySideList = $(".cityList");
+    // var citySideList = $(".cityList");
     var searchButton=$("#searchEl");
     var search = $("#inputEl");
     var previousCities = [];
@@ -10,7 +10,7 @@ $(document).ready(function(){
     // get all searched cities, for loop, push to previousCities for each city
     // then render function that loops through all previousCities, added button and appends to citySideList
     for (var i = 0; i < storage.length; i++){
-      previousCities.push(storage[0])
+      previousCities.push(storage[i])
       console.log(storage[0])
       
     }
@@ -31,24 +31,36 @@ $(document).ready(function(){
 
     
   }
+  
+
      
   function renderButton(){
     // console.log(citySideList)
+    $(".cityList").empty()
+    console.log(previousCities)
     for (var i=0; i < previousCities.length; i++) {
-    var sideBtn =$("<button>")
-    var listEl =$("<ul>").text(previousCities[i]);
+    var sideBtn =$("<button>").text(previousCities[i]).addClass("buttonOnNow");
+    var listEl =$("<p>")
     listEl.append(sideBtn)
-    $(".cityList").text(listEl)
+    $(".cityList").append(listEl)
     }
   }
 
+  // $(".clickBtn").on("click", function(){
+    
+  //   console.log(this)
+  // });
+
   // add a click event to the side cities
-    $( ".cityList").on("click", function(e){
+    $("body").on("click", ".buttonOnNow", function(e){
       e.preventDefault();
       // var newCityList = $(citySideList).val();
       // citySideList.push(newCityList)
-      makeWeatherRequest(cityName)
-
+      
+      var nextCity =$(this).val()
+      console.log($(this))
+      makeWeatherRequest(nextCity)
+      console.log(nextCity)
     })
 
   function makeWeatherRequest(cityName){
