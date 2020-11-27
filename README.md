@@ -16,6 +16,13 @@ Planning to travel, or sitting at home wishing you could?  This is a weather app
 
 ## User Notes
 This was the hardest project so far.  I was not able to get my appended buttons to work, and I had to let go of trying to get a loop to pull the information for my 5 day.  Dry coding will hopefully come with some time.  
- 
+
+## Technologies Used 
+[Moment.js](https://momentjs.com/)
+
+[Open Weather one call API](https://openweathermap.org/api/one-call-api)
+
+[Open Weather Ultraviolet Index](https://openweathermap.org/api/uvi)
+
 ## License
 N/A
