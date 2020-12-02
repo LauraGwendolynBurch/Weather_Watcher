@@ -11,7 +11,7 @@ $(document).ready(function(){
     // then render function that loops through all previousCities, added button and appends to citySideList
     for (var i = 0; i < storage.length; i++){
       previousCities.push(storage[i])
-      console.log(storage[0])
+      // console.log(storage[0])
       
     }
   //  when user clicks search button
@@ -28,8 +28,6 @@ $(document).ready(function(){
     localStorage.setItem("city", JSON.stringify(previousCities))
     search.val("");
     renderButton()
-
-    
   }
   
 
@@ -46,35 +44,30 @@ $(document).ready(function(){
     }
   }
 
-  // $(".clickBtn").on("click", function(){
-    
-  //   console.log(this)
-  // });
-
-  // add a click event to the side cities
+    // add a click event to the side cities
     $(".cityList").on("click", ".buttonOnNow", function(e){
       e.preventDefault();
       // var newCityList = $(citySideList).val();
       // citySideList.push(newCityList)
       
       var nextCity =this.innerText
-      console.log(this)
+      // console.log(this)
       makeWeatherRequest(nextCity)
-      console.log(nextCity)
+      // console.log(nextCity)
     })
 
   function makeWeatherRequest(cityName){
     // next build urrrl for first API request key}
     var queryURL ="https://api.openweathermap.org/data/2.5/weather?q="+ cityName +"&appid=79f846e03cf3435d40ca0302d0a1b7fb";
-    // console.log(cityName)
+   
     if (cityName == "" || !(isNaN(cityName))){
       
       return;
     };
-
+    // console.log(cityName)
     // NEXT make the request to the URL with JQuery ajax
     $.ajax( queryURL ).then(function(response) {
-      // console.log(response)
+      // console.log(cityName)
       var icon=response.weather[0].icon
       var windEl = response.wind.speed
       var windChange=Math.floor(windEl * 2.2)
@@ -84,7 +77,7 @@ $(document).ready(function(){
       var tempChange=Math.floor((tempEl-273.15)*1.8)+32
       var queryUV="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=79f846e03cf3435d40ca0302d0a1b7fb";
       
-      $("#cityNameHere").text(cityName)
+      $("#cityNameHere").text(response.name)
       $("#windSpeed").text("Wind Speed: " + windChange + " MPH")
       $("#iconHere").attr("src", "https://openweathermap.org/img/w/" + icon + ".png")
       $("#humidity").text("Humidity: " + response.main.humidity + " %")

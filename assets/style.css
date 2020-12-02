@@ -18,3 +18,9 @@
     width: fit-content;
 }
 
+.buttonOnNow{
+    width: 6em;
+    margin: 5px;
+    padding: 5px;
+    background: white;
+}
