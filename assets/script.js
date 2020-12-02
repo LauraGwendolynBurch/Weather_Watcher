@@ -40,7 +40,7 @@ $(document).ready(function(){
     console.log(previousCities)
     for (var i=0; i < previousCities.length; i++) {
     var sideBtn =$("<button>").text(previousCities[i]).addClass("buttonOnNow");
-    var listEl =$("<p>")
+    var listEl =$("<li>")
     listEl.append(sideBtn)
     $(".cityList").append(listEl)
     }
@@ -52,13 +52,13 @@ $(document).ready(function(){
   // });
 
   // add a click event to the side cities
-    $("body").on("click", ".buttonOnNow", function(e){
+    $(".cityList").on("click", ".buttonOnNow", function(e){
       e.preventDefault();
       // var newCityList = $(citySideList).val();
       // citySideList.push(newCityList)
       
-      var nextCity =$(this).val()
-      console.log($(this))
+      var nextCity =this.innerText
+      console.log(this)
       makeWeatherRequest(nextCity)
       console.log(nextCity)
     })
@@ -84,6 +84,7 @@ $(document).ready(function(){
       var tempChange=Math.floor((tempEl-273.15)*1.8)+32
       var queryUV="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=79f846e03cf3435d40ca0302d0a1b7fb";
       
+      $("#cityNameHere").text(cityName)
       $("#windSpeed").text("Wind Speed: " + windChange + " MPH")
       $("#iconHere").attr("src", "https://openweathermap.org/img/w/" + icon + ".png")
       $("#humidity").text("Humidity: " + response.main.humidity + " %")
@@ -96,17 +97,18 @@ $(document).ready(function(){
        
         for(var i = 0; i < uvIndex; i++){
           
-          if (uvIndex < 3 ){
-            $("#uvIndex").addClass("moderate");
+          if (uvIndex <= 3 ){
+            $("#uvIndex").attr("class", "moderate");
           }
-          else if (uvIndex < 5 ){
-            $("#uvIndex").addClass("high")
+          
+          else if (uvIndex <= 5 && uvIndex >3 ){
+            $("#uvIndex").attr("class", "high")
           }
-          else if (uvIndex > 7 ){
-            $("#uvIndex").addClass("veryHigh")
+          else if (uvIndex >= 7 && uvIndex >5 ){
+            $("#uvIndex").attr("class", "veryHigh")
           }
-          else if (uvIndex > 10 ) {
-            $("#uvIndex").addClass("extreme")
+          else if (uvIndex >= 10 && uvIndex >7 ) {
+            $("#uvIndex").attr("class", "extreme")
           }
        }
       
