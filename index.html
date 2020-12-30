@@ -1,102 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather_Watcher</title>
-    <link rel="stylesheet" href="./assets/reset.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assets/style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather_Watcher</title>
+  <link rel="stylesheet" href="./assets/reset.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
 <body>
-   
-<div class="jumbotron jumbotron-fluid p-3 mb-2 bg-dark text-white text-center">
+
+  <div class="jumbotron jumbotron-fluid p-3 mb-2 bg-dark text-white text-center">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold">Weather Dashboard</h1>
+    </div>
+  </div>
+
   <div class="container">
-    <h1 class="display-4 font-weight-bold">Weather Dashboard</h1>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-3">
+        <h5 class="m-2 p-1 text-left font-weight-normal">Search for a City:</h5>
+        <form class="form-inline m-2 p-1">
+          <input class="form-control m-2 p-1 mr-sm-2" id="inputEl" type="search" placeholder="Search"
+            aria-label="Search">
+          <button class="btn btn-primary m-2 p-1" type="submit" id="searchEl">Search</button>
+        </form>
+      </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <h5 class="m-2 p-1 text-left font-weight-normal">Search for a City:</h5>
-      <form class="form-inline m-2 p-1">
-        <input class="form-control m-2 p-1 mr-sm-2" id="inputEl" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary m-2 p-1" type="submit" id="searchEl">Search</button>
-      </form>
-    </div>
-   
-    <div class="card m-2  p-1 col">
-      <h5 class="m-2  p-1" ><span id="cityNameHere"></span><span id="currentDay"></span><img id="iconHere"></img></h5>
-      <h6 class="m-2  p-1 font-weight-light" id="temperature"></h6>
-      <h6 class="m-2  p-1 font-weight-light" id="humidity"></h6>
-      <h6 class="m-2  p-1 font-weight-light" id="windSpeed"></h6>
-      <h6 class="m-2  p-1 font-weight-light" id="uvIndex"></h6>
+      <div class="card m-2  p-1 col">
+        <h5 class="m-2  p-1"><span id="cityNameHere"></span><span id="currentDay"></span><img id="iconHere"></img></h5>
+        <h6 class="m-2  p-1 font-weight-light" id="temperature"></h6>
+        <h6 class="m-2  p-1 font-weight-light" id="humidity"></h6>
+        <h6 class="m-2  p-1 font-weight-light" id="windSpeed"></h6>
+        <h6 class="m-2  p-1 font-weight-light" id="uvIndex"></h6>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
-    <div class="col-3">
-      <ul class="list-group cityList">
-        <!-- <li><button class="clickBtn">Seattle</button></li> -->
-      </ul>
+      <div class="col-3">
+        <ul class="list-group cityList"></ul>
+      </div>
+      <h5 class="m-2  p-1 font-weight-normal titleForecast">5-Day<br>Forecast</h5>
+      <div class="row cardRow "></div>
     </div>
-  
-  <div class="row">
-    <h5 class="m-2  p-1 font-weight-normal">5-Day<br>Forecast</h5>
-    <div class="card col-xs text-white text-nowrap bg-primary m-4 p-2" style="max-width: 11rem; max-height: 9rem;">
-     <h6 class="card-title text-sm-left font-weight-bold " id="fiveDay"></h6>
-     <h6><img id="dayIcon"></h6>
-     <h6 id="dayTemp"></h6>
-     <h6 id="dayHumidity"></h6>
-    </div>  
   </div>
-     
-  <div class="row">
-    <div class="card col-xs text-white text-nowrap bg-primary m-4 p-2" style="max-width: 11rem; max-height: 9rem;">
-      <h6 class="card-title text-sm-left font-weight-bold " id="fiveDay2"></h6>
-      <h6><img id="dayIcon2"></h6>
-      <h6 id="dayTemp2"></h6>
-      <h6 id="dayHumidity2"></h6>
-     </div>  
-   </div>
+  </div>
 
-   <div class="row">
-    <div class="card col-xs text-white text-nowrap bg-primary m-4 p-2" style="max-width: 11rem; max-height: 9rem;">
-      <h6 class="card-title text-sm-left font-weight-bold " id="fiveDay3"></h6>
-      <h6><img id="dayIcon3"></h6>
-      <h6 id="dayTemp3"></h6>
-      <h6 id="dayHumidity3"></h6>
-     </div>  
-   </div>
-
-   <div class="row">
-    <div class="card col-xs text-white text-nowrap bg-primary m-4 p-2" style="max-width: 11rem; max-height: 9rem;">
-      <h6 class="card-title text-sm-left font-weight-bold " id="fiveDay4"></h6>
-      <h6><img id="dayIcon4"></h6>
-      <h6 id="dayTemp4"></h6>
-      <h6 id="dayHumidity4"></h6>
-     </div>  
-   </div>
-
-   <div class="row">
-   <div class="card col-xs text-white text-nowrap bg-primary m-4 p-2" style="max-width: 11rem; max-height: 9rem;">
-    <h6 class="card-title text-sm-left font-weight-bold " id="fiveDay5"></h6>
-    <h6><img id="dayIcon5"></h6>
-    <h6 id="dayTemp5"></h6>
-    <h6 id="dayHumidity5"></h6>
-   </div>  
- </div>
-</div>
-</div>
-
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/script.js"></script> 
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/script.js"></script>
 
 </body>
+
 </html>
